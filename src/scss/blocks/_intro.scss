@@ -5,10 +5,17 @@
     Color:$mainColor;
     display: flex;
     align-items: center;
-    background: linear-gradient(180deg, rgba(0, 255, 25, 0.3) 0%, 
-    rgba(24, 170, 58, 0.52) 48.44%, rgba(52, 73, 94, 0.62) 100%), 
-    url('../img/bg-logo.svg') -198px 0px/1510px 1350px no-repeat;
+    position: relative;
     
+    background: linear-gradient(180deg, rgba(0, 255, 25, 0.3) 0%,rgba(24, 170, 58, 0.52) 48.44%, rgba(52, 73, 94, 0.62) 100%), 
+                url('../img/bg-logo.svg') -198px 0px/1510px 1350px no-repeat;
+    
+    // & .container{
+    //     display: flex;
+    //     flex-direction: column;
+    //     justify-content: space-between;
+    // }
+
     &__inner{
         display: flex;
         flex-direction: row;
@@ -43,7 +50,8 @@
             text-decoration: none;
             border-bottom: none;
             &:hover,
-            &:active{
+            &:active,
+            &:focus{
                 span{
                     border-bottom: 2px solid $mainColor;
                 }
@@ -58,6 +66,25 @@
             &:not(:last-child){
                 margin-bottom: 30px;
             }
+            &:last-child img{
+                --animate-delay: 6s;
+            }
+        }
+    }
+    &__scrrollDown{
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        left: 50%;
+        bottom: 20px;
+        img:first-child{
+            margin-bottom: 5px;
+            max-width: 25px;
+        }    
+        img:last-child{
+            margin-left: 3px;
+            max-width: 20px;
         }
     }
 }
