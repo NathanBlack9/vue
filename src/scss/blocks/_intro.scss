@@ -3,6 +3,8 @@
     min-height: 100vh;
     font-family: 'Inter', sans-serif;
     Color:$mainColor;
+    display: flex;
+    align-items: center;
     background: linear-gradient(180deg, rgba(0, 255, 25, 0.3) 0%, 
     rgba(24, 170, 58, 0.52) 48.44%, rgba(52, 73, 94, 0.62) 100%), 
     url('../img/bg-logo.svg') -198px 0px/1510px 1350px no-repeat;
@@ -11,21 +13,51 @@
         display: flex;
         flex-direction: row;
         width: 100%;
-        align-items: center;
     }
 
     &__item{
         width: 50%;
+        display: flex;
+        flex-direction: column;
+        
     }
     &__title{
         font-weight: bold;
         font-size: 36px;
         text-align: center;
+        margin-bottom: 23px;
     }
     &__subtitle{
         font-weight: 500;
         font-size: 17px;
         line-height: 25px;
         text-align: justify;
+        margin: 0 auto;
+        max-width: 560px;
+    }
+    .nav{
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        &__link{
+            text-decoration: none;
+            border-bottom: none;
+            &:hover,
+            &:active{
+                span{
+                    border-bottom: 2px solid $mainColor;
+                }
+            }
+            span{
+                font-weight: 600;
+                font-size: 20px;
+                line-height: 24px;
+                color: $mainColor;
+                @include TransitionMix(50ms);
+            }
+            &:not(:last-child){
+                margin-bottom: 30px;
+            }
+        }
     }
 }
