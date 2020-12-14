@@ -1,4 +1,9 @@
-console.log('unluko');
-console.log('unluko');
-console.log('unluko');
-console.log('1212');
+var accordion = document.getElementsByClassName('contentBx');
+  
+for (let i = 0; i < accordion.length; i++) {
+  accordion[i].addEventListener('click', ()=>{
+    accordion[i].classList.toggle('active');
+  });
+}
+
+

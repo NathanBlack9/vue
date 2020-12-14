@@ -1,0 +1,53 @@
+.main{
+    min-height: 1600px;
+    background: $mainBG;
+    padding: 138px 100px;
+    @include TransitionMix(0.2s);
+    .accordion{
+        width: 100%;
+        margin: 0 auto;
+        font-family: Inter;
+        font-style: normal;
+        & .contentBx{
+            position: relative;
+            &:not(:last-child){
+                margin-bottom: 35px;
+            }
+            & .label{
+                position: relative;
+                padding: 20px 50px;
+                background: $blockBG;
+                cursor: pointer;
+                font-weight: bold;
+                font-size: 36px;
+                line-height: 44px;
+                color: $titleColor;
+                &::before{
+                    content: '+';
+                    position: absolute;
+                    top: 50%;
+                    right: 20px;
+                    transform: translateY(-50%);
+                    font-size: 1em;
+                    font-weight: 400;
+                }
+            }
+            &.active .label::before{
+                content: '-';
+                padding-bottom: 8px;
+            }
+            & .content{
+                position: relative;
+                background: $accBG;
+                height: 0;
+                padding: 0 82px;
+                overflow: hidden;
+                @include TransitionMix(0.3s);
+            }
+            &.active .content{
+                min-height: 630px;
+                padding: 50px 82px;
+            }
+        }
+    }
+}
