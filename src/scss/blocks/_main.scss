@@ -32,6 +32,7 @@
                     font-weight: 400;
                     padding-bottom: 8px;
                 }
+
             }
             &.active .label::before{
                 content: '-';
@@ -43,9 +44,8 @@
                 height: 0;
                 min-height: 0;
                 padding: 0 82px;
-                overflow: hidden;
+                overflow-y: auto;
                 @include TransitionMix(0.3s);
-
                 p{
                     font-weight: normal;
                     font-size: 16px;
@@ -53,18 +53,59 @@
                     text-align: justify;
                     color: $textColor;
                     margin-bottom: 10px;
-
                     /*some help tag's for text*/
                     span,a{
                         font-weight: bold;
                         color: $linkColor;
                         text-decoration: none;
                     }
+                    .greened{
+                        color: $linkColor;
+                    }
+                    
                     /*------------------------*/
                 }
+                .content__title{
+                    font-weight: bold;
+                    font-size: 18px;
+                }
+                .code{
+                    width: 100%;
+                    padding: 21px 33px;
+                    font-family: consolas;
+                    font-size: 16px;
+                    line-height: 20px;
+                    text-align: justify;
+                    background-color: $codeBG;
+                    margin: 20px 0;
+                    position: relative;
+                    color: $textColor;
+                    &::after{
+                        content: 'code';
+                        position: absolute;
+                        top: 10px;
+                        right: 15px;
+                        font-weight: bold;
+                        font-size: 12px;
+                        color: rgba(black,0.4);
+                    }
+                    & tag{
+                        color: $codeTagColor;
+                    }
+                    & att{
+                        color: $codeAttColor;
+                    }
+                    & lin{
+                        color: $codeLinkColor;
+                    }
+                    & comm{
+                        color: $codeCommColor;
+                    }
+                }
+                
             }
             &.active .content{
-                min-height:800px;
+                min-height:900px;
                 padding: 50px 82px;
                 @include TransitionMix(0.3s);
             }

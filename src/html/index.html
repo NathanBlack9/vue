@@ -74,22 +74,275 @@
                         <p>Данный учебник только базовую информацию, поэтому дальнейшее знакомство с фреймворком можно продолжить с помощью <a href="https://ru.vuejs.org/v2/guide/">официальной документации</a>. Она полностью переведена на русский язык, а также постоянно обновляется в соответствии с актуальной версией Vue.js. Также на официальном сайте доступны <a href="https://ru.vuejs.org/v2/examples/index.html">примеры веб-приложений</a>, реализованных с помощью Vue.js.</p>
                     </div>
                 </div>
-                <div class="contentBx active">
+
+                <div class="contentBx">
                     <div class="label">События, атрибуты и методы</div>
                     <div class="content">
-                        <p>Настройка -methods - позволит нам хранить в себе набор функций, которые мы сможем навешивать на события. Во Vue эти функции более принято называть методами.</p>
-                    </div>
-                </div>
-                <div class="contentBx" >
-                    <div class="label">Вычисляемые свойства</div>
-                    <div class="content">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt blanditiis fugiat deserunt iure soluta, reprehenderit perspiciatis! Eius eum, non aliquid aliquam recusandae nihil, quaerat excepturi commodi ratione culpa accusamus neque.
+                        <p>Настройка <span class="greened">-methods</span> - позволит нам хранить в себе набор функций, которые мы сможем навешивать на события. Во Vue эти функции более принято называть <b>методами</b>.</p>
+                        <p>Итак, пусть у нас в <b>methods</b> лежит метод с названием <b>show</b>, который пока просто выводит на экран восклицательный знак:</p>
+                        <div class="code">
+<pre>
+<tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
+    el: <lin>'#app'</lin>,
+    data: {
+        message: <lin>'hello'</lin>,
+    },
+    methods: {
+        show: <att>function</att>() {
+            <att>alert</att>('!');
+        }
+    }
+});
+</pre>
+                        </div>
+                       <p>Мы можем вызвать наш метод внутри фигурных скобок, подобно тому, как мы обращались к свойствам. В этом случае для метода следует поставить круглые скобки в конце:</p>
+                       <div class="code">
+<pre>
+<tag>&lt;div</tag> <att>id=</att><lin>"app"&gt;</lin>
+    {{ show() }}
+<tag>&lt;/div&gt;</tag>
+</pre>
+                       </div>
+                       <p>После запуска этого кода вы сразу же увидите алерт с восклицательным знаком. Почему алерт выводится сразу же - потому что мы пока не привязали наш метод ни к какому событию.</p>
+                       <p>Давайте теперь выведем содержимое свойства <b>message</b> из <b>data</b>. Сделать это не так просто - в методах напрямую получить доступ к свойствам из <b>data</b> нельзя.</p>
+                       <p>Однако, во Vue встроен следующий способ: мы можем обратиться к любому свойству из <b>data</b> с помощью <b>this</b>. То есть: если у нас есть свойство <b>message</b>, то внутри любого метода мы можем обратиться к нему так: <b>this.message</b>.</p>
+                       <p>Давайте сделаем это:</p>
+                       <div class="code">
+<pre>
+<tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
+    el: <lin>'#app'</lin>,
+    data: {
+        message: <lin>'hello'</lin>,
+    },
+    methods: {
+        show: <att>function</att>() {
+            <att>alert</att>(<tag>this</tag><att>.message</att>);<comm>//выведет hello</comm>
+        }
+    }
+});
+</pre>
+                       </div>
+                       <p>Вызовем наш метод:</p>
+                       <div class="code">
+<pre>
+<tag>&lt;div</tag> <att>id=</att><lin>"app"&gt;</lin>
+    {{ show() }}
+<tag>&lt;/div&gt;</tag>
+</pre>
+                        </div>
+                        <p>После запуска этого кода вы сразу же увидите алерт с текстом 'hello'.</p>
+                        <p>Давайте теперь запустим наш метод по какому-нибудь событию.</p>
+                        <p>Для того, чтобы навесить событие на какой-нибудь DOM элемент, во Vue есть следующая директива: <b>v-on:названиеСобытия.</b></p>
+                        <p>Давайте, например, по клику на кнопку вызовем метод <b>show</b>. Для этого в тег <b>button</b> добавим атрибут <b>v-on:click</b> со значением <b>show</b>:</p>
+                        <div class="code">
+<pre>
+<tag>&lt;div</tag> <att>id=</att><lin>"app"&gt;</lin>
+    <tag>&lt;button</tag> <att>v-on:click</att><tag>&gt;</tag>Нажми на меня<tag>&lt;/button&gt;</tag>
+<tag>&lt;/div&gt;</tag>
+</pre>
+                        </div>
+                        <p>Обратите внимание на то, что круглые скобки после названия метода не ставятся.</p>
+                        <p>Давайте напишем реализацию метода <b>show</b>:</p>
+                        <div class="code">
+<pre>
+methods: {
+    show: <att>function</att>() {
+        <att>alert</att>(<tag>this</tag><att>.message</att>);
+    }
+}
+</pre>
+                        </div>
+                        <p>Ну, а теперь соберем все вместе, запустим и по нажатию на кнопку увидим текст сообщения:</p>
+                        <div class="code">
+<pre>
+<tag>&lt;div</tag> <att>id=</att><lin>"app"&gt;</lin>
+    <tag>&lt;button</tag> <att>v-on:click</att><tag>&gt;</tag>Нажми на меня<tag>&lt;/button&gt;</tag>
+<tag>&lt;/div&gt;</tag>
+<tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
+    el: <lin>'#app'</lin>,
+    data: {
+        message: <lin>'hello'</lin>,
+    },
+    methods: {
+        show: <att>function</att>() {
+            <att>alert</att>(<tag>this</tag><att>.message</att>);
+        }
+    }
+});
+</pre>
+                        </div>
+                        <p>Я думаю, что вы уже поняли, что с помощью v-on можно навешивать не только клики, но и другие события.</p>
+                        <p><span class="greened">Задача 1:</span> Дана кнопка. В <b>data</b> дано свойство <b>text</b>, в котором хранится текст 'hello'. Сделайте так, чтобы по нажатию на кнопку алертом вывелся текст из свойства <b>text</b>.</p>
+                        <p><span class="greened">Задача 2:</span> Дан инпут. Сделайте кнопку, нажатие на которую будет по очереди заблокировать и отблокировать наш инпут.</p>
                     </div>
                 </div>
                 <div class="contentBx">
-                    <div class="label">Условия списки и циклы</div>
+                    <div class="label">Вычисляемые свойства</div>
                     <div class="content">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt blanditiis fugiat deserunt iure soluta, reprehenderit perspiciatis! Eius eum, non aliquid aliquam recusandae nihil, quaerat excepturi commodi ratione culpa accusamus neque.
+                        <p>Введем понятие вычисляемых свойств, выделяющихся в коде элемента ключевым словом <span class="greened">computed</span>. Они очень полезны, когда усложняется логика работы с данными, и встраиваемые в шаблоны выражения уже не помогут.</p>
+                        <p>Пусть у нас есть свойство <b>message</b>, в котором хранится некоторая строка-сообщение. Давайте сделаем вычисляемое свойство <b>reversedMessage</b>, в котором будет хранится это же сообщение, но в перевернутом виде</p>
+                        <p>Для начала давайте сделаем функцию, которая будет выполнять переворот свойства <b>message</b>:</p>
+                        <div class="code">
+<pre>
+reversedMessage: <att>function</att>(){
+    <tag>return this</tag>.<att>message.split</att>('').<att>reverse</att>().<att>join</att>('');
+}
+</pre>
+                        </div>
+                        <p>Разместим теперь нашу функцию в настройке <b>computed</b>, предназначенной для создания вычисляемых свойств:</p>
+                        <div class="code">
+<pre>
+<tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
+    el: <lin>'#app'</lin>,
+    data: {
+        <comm>// Наше сообщение:</comm>
+        message: <lin>'hello'</lin>,
+    },
+    computed: {
+        <comm>// Перевернутое сообщение:</comm>
+        reversedMessage: <att>function</att>(){
+        <tag>return this</tag>.<att>message.split</att>('').<att>reverse</att>().<att>join</att>('');
+        }
+    }
+});
+</pre>
+                        </div>
+                        <p>То есть: обычные свойства хранятся в настройке <b>data</b> и представляют собой некоторые данные (числа, строки, массивы и тп), а вычисляемые свойства хранятся в настройке <b>computed</b> и представляют собой функции.</p>
+                        <p>Давайте теперь посмотрим, как мы будем пользоваться нашими свойствами:</p>
+                        <div class="code">
+<pre>
+<tag>&lt;div</tag> <att>id=</att><lin>"app"&gt;</lin>
+    <tag>&lt;p&gt;</tag>Изначальное сообщение: {{ message }}<tag>&lt;/p&gt;</tag>
+    <tag>&lt;p&gt;</tag>Сообщение задом наперед: {{ reversedMessage }}<tag>&lt;/p&gt;</tag>
+<tag>&lt;/div&gt;</tag>
+</pre>
+                        </div>
+                        <p>Как вы видите, в шаблоне нет разницы между обычными свойствами и вычисляемыми. В этом особое удобство использования вычисляемых свойств.</p>
+                        <p>Итак, давайте соберем весь код вместе и запустим:</p>
+                        <div class="code">
+<pre>
+    <tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
+        el: <lin>'#app'</lin>,
+        data: {
+            message: <lin>'hello'</lin>,
+        },
+        computed: {
+            reversedMessage: <att>function</att>(){
+            <tag>return this</tag>.<att>message.split</att>('').<att>reverse</att>().<att>join</att>('');
+            }
+        }
+    });
+    <tag>&lt;div</tag> <att>id=</att><lin>"app"&gt;</lin>
+        <tag>&lt;p&gt;</tag>Изначальное сообщение: {{ message }}<tag>&lt;/p&gt;</tag>
+        <tag>&lt;p&gt;</tag>Сообщение задом наперед: {{ reversedMessage }}<tag>&lt;/p&gt;</tag>
+    <tag>&lt;/div&gt;</tag>
+
+</pre>
+                        </div>
+                        <p>После запуска кода в первый абзац выведется наше сообщение, а во второй - оно же, но в перевернутом виде.</p>
+                        <p><span class="greened">Задача 1:</span> Пусть в <b>data</b> есть три cвойства: <b>name</b> (имя), <b>surname</b> (фамилия) и <b>patronymic</b> (отчество). Сделайте вычисляемое свойство <b>fullName</b>, которое будет содержать фамилию, имя и отчество, записанные через пробел.</p>
+                    </div>
+                </div>
+                <div class="contentBx active">
+                    <div class="label">Условия списки и циклы</div>
+                    <div class="content ">
+                        <p class="content__title">Условия</p>
+                        <p>Следующая директива, которую мы изучим, называется <b>v-if</b>. С ее помощью можно показывать или скрывать элементы.</p>
+                        <p>Как эта директива работает: параметром она принимает любое свойство объекта <b>data</b>. Если это свойство имеет значение <b>true</b> - то элемент будет показан, а если <b>false</b> - то скрыт.</p>
+                        <p>Если запустить следующий пример - абзац будет показан:</p>
+                        <div class="code">
+<pre>
+<tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
+    el: <lin>'#app'</lin>,
+    data: {
+        show: <att>true</att>,
+    },
+});
+<tag>&lt;div</tag> <att>id=</att><lin>"app"</lin>&gt;</tag>
+    <tag>&lt;p</tag> <att>v-if=</att><lin>"show"</lin><tag>&gt;</tag>hello<tag>&lt;/p&gt;</tag>
+<tag>&lt;/div&gt;</tag>
+</pre>
+                        </div>
+                        <p>А вот если show поставить в значение <b>false</b>, то абзац будет скрыт:</p>
+                        <p><span class="greened">Задача 1:</span> Пусть в data хранится следующее:</p>
+                        <div class="code">
+<pre>
+data: {
+    showName: <att>true</att>,
+    name: <lin>'Вася'</lin>
+}
+</pre>
+                        </div>
+                        <p>Выведите в абзаце значение свойства <b>name</b>. Покажите абзац, если свойство <b>showName</b> равно <b>true</b>, и скройте, если оно равно <b>false</b>.</p>
+                        <p>Директива <b>v-if</b> может также работать в комплекте с<b> v-else</b>. Давайте посмотрим, как это выглядит на практике.</p>
+                        <p>Пусть свойство <b>show</b> может принимать или <b>true</b> или <b>false</b>:</p>
+                        <div class="code">
+<pre>
+    <tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
+        el: <lin>'#app'</lin>,
+        data: {
+            show: <att>true</att>,<comm>// тут или true, или false</comm>
+        },
+    });
+</pre>
+                        </div>
+                        <p>Сделаем так, чтобы, если <b>show</b> равно <b>true</b>, то выводилось 'да', в противном случае - 'нет':</p>
+                        <div class="code">
+<pre>
+<tag>&lt;div</tag> <att>id=</att><lin>"app"</lin>&gt;</tag>
+    <tag>&lt;p</tag> <att>v-if=</att><lin>"show"</lin><tag>&gt;</tag>да<tag>&lt;/p&gt;</tag>
+    <tag>&lt;p</tag> <att>v-else</att><tag>&gt;</tag>нет<tag>&lt;/p&gt;</tag>
+<tag>&lt;/div&gt;</tag>
+</pre>
+                        </div>
+                        <p>Учтите, что<b> v-else</b> обязательно должен идти в комплекте с <b>v-if</b>.</p>
+                        <p><span class="greened">Задача 2:</span> Пусть в <b>data</b> хранится следующее:</p>
+                        <div class="code">
+<pre>
+data: {
+    hello: <att>true</att>,
+    name: <lin>'Вася'</lin>
+}
+</pre>
+                        </div>
+                        <p>С помощью свойства <b>name</b> выведите на экран 'Привет, Вася', если свойство <b>hello</b> равно <b>true</b> и 'Пока, Вася', если оно равно <b>false</b>. Для решения задачи сделайте два абзаца.</p>
+                        <p>Вместо нескольких <b>v-if</b> можно использовать конструкции <b>v-else-if</b>:</p>
+                        <div class="code">
+<pre>
+    <tag>&lt;div</tag> <att>id=</att><lin>"app"</lin>&gt;</tag>
+        <tag>&lt;p</tag> <att>v-if=</att><lin>"num == 1"</lin><tag>&gt;</tag>один<tag>&lt;/p&gt;</tag>
+        <tag>&lt;p</tag> <att>v-else-if=</att><lin>"num == 2"</lin><tag>&gt;</tag>два<tag>&lt;/p&gt;</tag>
+        <tag>&lt;p</tag> <att>v-else-if=</att><lin>"num == 3"</lin><tag>&gt;</tag>три<tag>&lt;/p&gt;</tag>
+        <tag>&lt;p</tag> <att>v-else</att><tag>&gt;</tag>что-то другое<tag>&lt;/p&gt;</tag>
+    <tag>&lt;/div&gt;</tag>
+</pre>
+                        </div>
+                        <p><span class="greened">Задача 3:</span> Пусть в <b>data</b> хранится следующее:</p>
+                        <div class="code">
+<pre>
+data: {
+    age: <att>25</att>,
+}  
+</pre>
+                        </div>
+                        <p>Если свойство <b>age</b> меньше 18 - выведите на экран 'подросток', если она от 19 до 25 - выведите на экран 'молодой человек', а если более 26 - выведите на экран 'мужчина'.</p>
+                        <p class="content__title">Циклы</p>
+                        <p>Пусть теперь в <b>data</b> у нас есть элемент <b>items</b>, который содержит внутри себя массив с некоторыми данными:</p>
+                        <div class="code">
+<pre>
+<tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
+    el: <lin>'#app'</lin>,
+    data: {
+        items: [<lin>'a'</lin>,<lin>'b'</lin>,<lin>'c'</lin>,<lin>'d'</lin>,<lin>'e'</lin>],
+    },
+});
+</pre>
+                        </div>
+                        <p>Давайте сделаем список <b>ul</b>, внутри которого разместим каждый элемент нашего массива <b>items</b> в отдельную <b>li</b>.</p>
+                        <p>Очевидно, что нам нужен какой-то цикл, который сделает это за нас. Во Vue такой цикл делается следующим образом:<br> <b>&lt;li v-for="item in items"&gt;<b>.</p>
+                            
+
+
                     </div>
                 </div>
                 <div class="contentBx">
