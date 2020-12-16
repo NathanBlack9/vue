@@ -1,0 +1,16 @@
+.footer{
+    padding: 59px 0;
+    background-color: $footerBG;
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 13px;
+    color: $blockBG;
+    .container{
+        display: flex;
+        justify-content: space-between;
+    }
+    a{
+       color: $blockBG;
+       text-decoration:none;
+    }
+}

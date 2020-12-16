@@ -60,7 +60,7 @@
         <div class="container">
             <div class="accordion">
 
-                <div class="contentBx">
+                <div class="contentBx active">
                     <div class="label">Что такое Vue.js?</div>
                     <div class="content">
                         <p><b>Vue</b> является одним из самых популярных JavaScript фреймворков. Фреймворк представляет собой заготовку, которая помогает вам писать код.</p>
@@ -221,29 +221,28 @@ reversedMessage: <att>function</att>(){
                         <p>Итак, давайте соберем весь код вместе и запустим:</p>
                         <div class="code">
 <pre>
-    <tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
-        el: <lin>'#app'</lin>,
-        data: {
-            message: <lin>'hello'</lin>,
-        },
-        computed: {
-            reversedMessage: <att>function</att>(){
-            <tag>return this</tag>.<att>message.split</att>('').<att>reverse</att>().<att>join</att>('');
-            }
+<tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
+    el: <lin>'#app'</lin>,
+    data: {
+        message: <lin>'hello'</lin>,
+    },
+    computed: {
+        reversedMessage: <att>function</att>(){
+        <tag>return this</tag>.<att>message.split</att>('').<att>reverse</att>().<att>join</att>('');
         }
-    });
-    <tag>&lt;div</tag> <att>id=</att><lin>"app"&gt;</lin>
-        <tag>&lt;p&gt;</tag>Изначальное сообщение: {{ message }}<tag>&lt;/p&gt;</tag>
-        <tag>&lt;p&gt;</tag>Сообщение задом наперед: {{ reversedMessage }}<tag>&lt;/p&gt;</tag>
-    <tag>&lt;/div&gt;</tag>
-
+    }
+});
+<tag>&lt;div</tag> <att>id=</att><lin>"app"&gt;</lin>
+    <tag>&lt;p&gt;</tag>Изначальное сообщение: {{ message }}<tag>&lt;/p&gt;</tag>
+    <tag>&lt;p&gt;</tag>Сообщение задом наперед: {{ reversedMessage }}<tag>&lt;/p&gt;</tag>
+<tag>&lt;/div&gt;</tag>
 </pre>
                         </div>
                         <p>После запуска кода в первый абзац выведется наше сообщение, а во второй - оно же, но в перевернутом виде.</p>
                         <p><span class="greened">Задача 1:</span> Пусть в <b>data</b> есть три cвойства: <b>name</b> (имя), <b>surname</b> (фамилия) и <b>patronymic</b> (отчество). Сделайте вычисляемое свойство <b>fullName</b>, которое будет содержать фамилию, имя и отчество, записанные через пробел.</p>
                     </div>
                 </div>
-                <div class="contentBx active">
+                <div class="contentBx ">
                     <div class="label">Условия списки и циклы</div>
                     <div class="content ">
                         <p class="content__title">Условия</p>
@@ -278,12 +277,12 @@ data: {
                         <p>Пусть свойство <b>show</b> может принимать или <b>true</b> или <b>false</b>:</p>
                         <div class="code">
 <pre>
-    <tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
-        el: <lin>'#app'</lin>,
-        data: {
-            show: <att>true</att>,<comm>// тут или true, или false</comm>
-        },
-    });
+<tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
+    el: <lin>'#app'</lin>,
+    data: {
+        show: <att>true</att>,<comm>// тут или true, или false</comm>
+    },
+});
 </pre>
                         </div>
                         <p>Сделаем так, чтобы, если <b>show</b> равно <b>true</b>, то выводилось 'да', в противном случае - 'нет':</p>
@@ -309,12 +308,12 @@ data: {
                         <p>Вместо нескольких <b>v-if</b> можно использовать конструкции <b>v-else-if</b>:</p>
                         <div class="code">
 <pre>
-    <tag>&lt;div</tag> <att>id=</att><lin>"app"</lin>&gt;</tag>
-        <tag>&lt;p</tag> <att>v-if=</att><lin>"num == 1"</lin><tag>&gt;</tag>один<tag>&lt;/p&gt;</tag>
-        <tag>&lt;p</tag> <att>v-else-if=</att><lin>"num == 2"</lin><tag>&gt;</tag>два<tag>&lt;/p&gt;</tag>
-        <tag>&lt;p</tag> <att>v-else-if=</att><lin>"num == 3"</lin><tag>&gt;</tag>три<tag>&lt;/p&gt;</tag>
-        <tag>&lt;p</tag> <att>v-else</att><tag>&gt;</tag>что-то другое<tag>&lt;/p&gt;</tag>
-    <tag>&lt;/div&gt;</tag>
+<tag>&lt;div</tag> <att>id=</att><lin>"app"</lin>&gt;</tag>
+    <tag>&lt;p</tag> <att>v-if=</att><lin>"num == 1"</lin><tag>&gt;</tag>один<tag>&lt;/p&gt;</tag>
+    <tag>&lt;p</tag> <att>v-else-if=</att><lin>"num == 2"</lin><tag>&gt;</tag>два<tag>&lt;/p&gt;</tag>
+    <tag>&lt;p</tag> <att>v-else-if=</att><lin>"num == 3"</lin><tag>&gt;</tag>три<tag>&lt;/p&gt;</tag>
+    <tag>&lt;p</tag> <att>v-else</att><tag>&gt;</tag>что-то другое<tag>&lt;/p&gt;</tag>
+<tag>&lt;/div&gt;</tag>
 </pre>
                         </div>
                         <p><span class="greened">Задача 3:</span> Пусть в <b>data</b> хранится следующее:</p>
@@ -340,34 +339,362 @@ data: {
                         </div>
                         <p>Давайте сделаем список <b>ul</b>, внутри которого разместим каждый элемент нашего массива <b>items</b> в отдельную <b>li</b>.</p>
                         <p>Очевидно, что нам нужен какой-то цикл, который сделает это за нас. Во Vue такой цикл делается следующим образом:<br> <b>&lt;li v-for="item in items"&gt;<b>.</p>
-                            
-
-
+                        <p>Итого полный код для <b>li</b> будет выглядеть так:</p>
+                        <div class="code">
+<pre>
+<tag>&lt;li</tag> <att>v-for=</att><lin>"item in items"</lin>&gt;{{ item }}<tag>&lt;/li&gt;</tag>
+</pre>
+                        </div>
+                        <p>Давайте соберем все вместе и запустим:</p>
+                        <div class="code">
+<pre>
+<tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
+    el: <lin>'#app'</lin>,
+    data: {
+        items: [<lin>'a'</lin>,<lin>'b'</lin>,<lin>'c'</lin>,<lin>'d'</lin>,<lin>'e'</lin>],
+    },
+});
+<tag>&lt;div</tag> <att>id=</att><lin>"app"</lin><tag>&gt;</tag>    
+    <tag>&lt;ul&gt;</tag>
+	<tag>&lt;li</tag> <att>v-for=</att><lin>"item in items"</lin>&gt;{{ item }}<tag>&lt;/li&gt;</tag>
+    <tag>&lt;/ul&gt;</tag>
+<tag>&lt;/div&gt;</tag>
+</pre>
+                        </div>
+                        <p>Итак, если у нас есть массив с данными, мы можем перебрать его в цикле и сформировать нужный нам HTML код прямо на лету.</p>
+                        <p>Иногда кроме элементов массива, мы хотели бы получить доступ еще и к ключам. Для этого вместо <b>item in items</b> следует написать <b>(item, index) in items</b> - тогда в переменную <b>item</b> будут попадать элементы массива, а в <b>index</b> - их ключи. Вместо <b>index</b> вы можете использовать любое другое название, как вам удобно.</p>
+                        <p>Циклом <b>v-for</b> можно перебирать не только массивы, но и объекты. Синтаксис полностью аналогичный.</p>
+                        <p><span class="greened">Задача 4:</span> Пусть в <b>data</b> хранится следующий массив:</p>
+                        <div class="code">
+<pre>
+data: {
+    items: [<lin>1</lin>,<lin>2</lin>,<lin>3</lin>,<lin>4</lin>,<lin>5</lin>],
+},
+</pre>
+                        </div>
+                        <p>Выведите на экран элементы этого массива в виде списка <b>ul</b>.</p>
                     </div>
                 </div>
-                <div class="contentBx">
+                <div class="contentBx ">
                     <div class="label">Работа с фильтрами</div>
                     <div class="content">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt blanditiis fugiat deserunt iure soluta, reprehenderit perspiciatis! Eius eum, non aliquid aliquam recusandae nihil, quaerat excepturi commodi ratione culpa accusamus neque.
+                        <p>Иногда бывает так, что при выводе данных мы хотим с ними-что-нибудь сделать.</p>
+                        <p>Следующий способ для преобразования данных делается через <i>фильтры</i>. Давайте посмотрим, как ими пользоваться.</p>
+                        <p>Пусть в свойстве <b>message</b> хранится какая-то строка, выведем ее на экран:</p>
+                        <div class="code">
+<pre>
+<tag>&lt;div</tag> <att>id=</att><lin>"app"</lin>&gt;</tag>
+    <tag>&lt;p&gt;</tag>{{ message }}<tag>&lt;/p&gt;</tag>
+<tag>&lt;/div&gt;</tag>
+</pre>
+                        </div>
+                        <p>Пусть теперь у нас есть фильтр с названием <b>capitalize</b>, который делает у строки первую букву заглавной. Реализацию этого фильтра мы должны будем сделать самостоятельно, но пусть пока считаем, что она уже есть. В этом случае фильтр будет применятся так: через вертикальную палочку | к нашему свойству <b>message</b>:</p>
+                        <div class="code">
+<pre>
+<tag>&lt;div</tag> <att>id=</att><lin>"app"</lin>&gt;</tag>
+    <tag>&lt;p&gt;</tag>{{ message | capitalize }}<tag>&lt;/p&gt;</tag>
+<tag>&lt;/div&gt;</tag>
+</pre>
+                        </div>
+                        <p>Давайте теперь напишем реализацию нашего фильтра <b>capitalize</b>. Он будет представлять собой функцию, которая параметром принимает строку, а возвращает эту же строку, но с заглавной первой буквой:</p>
+                        <div class="code">
+<pre>
+<att>function</att>(<tag>str</tag>) {
+    <tag>return</tag> <tag>str</tag>[0].<att>toUpperCase</att>() + <tag>str</tag>.<att>slice</att>(1);
+}
+</pre>
+                        </div>
+                        <p>Теперь нам необходимо зарегистрировать наш фильтр. Для этого его следует написать в настройку <b>filters</b> нашего объекта Vue. Давайте зарегистрируем нашу функцию под именем <b>capitalize</b>:</p>
+                        <div class="code">
+<pre>
+<tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
+    el: <lin>'#app'</lin>,
+    data: {
+        message: <lin>'hello'</lin>,
+    },
+    filters: {
+        <comm>// Регистрируем фильтр capitalize:</comm>
+        capitalize: <att>function</att>(<tag>str</tag>) {
+        <tag>return</tag> <tag>str</tag>[0].<att>toUpperCase</att>() + <tag>str</tag>.<att>slice</att>(1);
+        }
+    }
+});
+</pre>
+                        </div>
+                        <p>Все, им можно пользоваться. Давайте попробуем:</p>
+                        <div class="code">
+<pre>
+<tag>&lt;div</tag> <att>id=</att><lin>"app"</lin>&gt;</tag>
+<tag>&lt;p&gt;</tag>{{ message | capitalize }}<tag>&lt;/p&gt;</tag>
+<tag>&lt;/div&gt;</tag>
+<tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
+    el: <lin>'#app'</lin>,
+    data: {
+        message: <lin>'hello'</lin>,
+    },
+    filters: {
+        <comm>// Регистрируем фильтр capitalize:</comm>
+        capitalize: <att>function</att>(<tag>str</tag>) {
+        <tag>return</tag> <tag>str</tag>[0].<att>toUpperCase</att>() + <tag>str</tag>.<att>slice</att>(1);
+        }
+    }
+});
+</pre>
+                        </div>
+                        <p>Запустите этот код и содержимое свойства <b>message</b> выведется с заглавной первой буквой.</p>
+                        <p>Фильтры можно объединять в цепочки. Пусть у нас есть фильтр <b>lowecase</b>, который переводит все буквы в нижний регистр и уже реализованный нами выше фильтр <b>capitalize</b>.</p>
+                        <p>Пусть в свойстве <b>message</b> строка хранится в верхнем регистре, вот так: 'HELLO'. А мы хотели бы сделать из нее вот такую строку: 'Hello'. Применим вначале фильтр <b>lowercase</b> для преобразования всех букв в нижний регистр, а потом с помощью <b>capitalize</b> сделаем первую букву заглавной.</p>
+                        <p><span class="greened">Задача 1:</span> Сделайте фильтр <b>uppercase</b>, который будет переводить всю строку в верхний регистр.</p>
+                        <p><span class="greened">Задача 2:</span> Сделайте фильтр <b>formatDate</b>, который будет принимать параметром дату в формате 'год-месяц-день' и преобразовывать ее в формат 'день.месяц.год'.</p>
                     </div>
                 </div>
-                <div class="contentBx">
+                <div class="contentBx ">
                     <div class="label">Работа с компонентами</div>
                     <div class="content">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt blanditiis fugiat deserunt iure soluta, reprehenderit perspiciatis! Eius eum, non aliquid aliquam recusandae nihil, quaerat excepturi commodi ratione culpa accusamus neque.
+                        <p>Если мы посмотрим на какой-нибудь сайт, то можем выделить на нем некоторые блоки: хедер, контент, сайдбар, футер.</p>
+                        <p>При создании сайта на Vue мы также можем использовать такие независимые блоки. Они позволят нам лучше организовать наш код и упростят его дальнейшую поддержку.</p>
+                        <p>Во Vue такие блоки называются <i>компонентами</i>. В крупных приложениях разделение на компоненты становится обязательным условием для сохранения управляемости процесса разработки</p>
+                        <p>Итак, давайте приступим к изучению компонентов.</p>
+                        <p>Во Vue компонент делается с помощью метода <b>Vue.component</b>. Этот метод первым параметром принимает название нашего компонента, а вторым - объект настроек:</p>
+                        <div class="code">
+<pre>
+<tag>Vue</tag>.<att>component</att>(<lin>название_компонента</lin>, {
+    <i>настройки</i>
+});
+</pre>
+                        </div>
+                        <p>Все компоненты следует создавать до команды <b>new Vue</b>. Давайте сделаем компонент с названием <b>my-component</b>:</p>
+                        <div class="code">
+<pre>
+<tag>Vue</tag>.<att>component</att>(<lin>'my-component'</lin>, {
+    <i>настройки</i>
+});
+<tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
+    el: <lin>'#app'</lin>,
+});
+</pre>
+                        </div>
+                        <p>Давайте теперь добавим настройки нашему компоненту. Первая и самая главная настройка - это <b>template</b>. С ее помощью мы должны задать HTML код, который будет результатом работы нашего компонента.</p>
+                        <p>Давайте добавим эту настройку:</p>
+                        <div class="code">
+<pre>
+<tag>Vue</tag>.<att>component</att>(<lin>'my-component'</lin>, {
+    template: <lin>'&lt;div&gt;Пользовательский компонент!&lt;/div&gt;'</lin>,
+});
+<tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
+    el: <lin>'#app'</lin>,
+});
+</pre>
+                        </div>
+                        <p>Обратите внимание на то, что результат работы <b>Vue.component</b> мы никуда не записываем. Это и не нужно, ведь с помощью <b>Vue.component</b> просто происходит регистрация нового компонента. И после регистрации мы можем вставить этот компонент в любое место нашего HTML кода нашего Vue приложения.</p>
+                        <p>Сейчас наше приложение Vue размещается в &lt;div id="app"&gt;. Наш компонент называется <b>my-component</b>. Мы можем вставить результат работы нашего компонента в любое место &lt;div id="app"&gt; следующим образом: &lt;<b>my-component</b>&gt;&lt;<b>/my-component</b>&gt; - то есть каждому компоненту соответствует тег с таким же названием. Сделайте это самостоятельно. В результате выполнения этого кода вместо тега компонента &lt;<b>my-component</b>&gt;&lt;<b>/my-component</b>&gt; подставится результат работы этого компонента, то есть содержимое его настройки <b>template</b>.</p>
+                        <p>Результат будет таким:</p>
+                        <div class="code">
+<pre>
+<tag>&lt;div</tag> <att>id=</att><lin>"app"</lin>&gt;</tag>
+    <tag>&lt;div <att>class=</att><lin>"task"</lin>&gt;</tag>Пользовательский компонент!<tag>&lt;/div&gt;</tag>
+<tag>&lt;/div&gt;</tag>
+</pre>
+                        </div>
+                        <p>Сейчас у нас есть основной компонент, который мы создали с помощью <b>new Vue</b> и дочерний компонент <b>my-component</b>.</p>
+                        <p>Как вы хорошо знаете, у основного компонента есть настройка <b>data</b>, внутри которой хранятся данные. Однако, наш дочерний компонент <b>my-component</b> не имеет доступа к этим данным - и это правильно: родительский компонент должен четко сказать, какие данные он хочет передать дочернему, а какие - нет.</p>
+                        <p>Давайте передадим данные в наш компонент <b>my-component</b>. Пусть, к примеру, у нас есть имя 'Вася'. Передадим это имя в компонент так, чтобы к нему можно было обратиться внутри нашего компонента через фигурные скобки, вот так: <b>{{ name }}</b>.</p>
+                        <p>Сделаем это:</p>
+                        <div class="code">
+<pre>
+<tag>Vue</tag>.<att>component</att>(<lin>'my-component'</lin>, {
+    template: <lin>'&lt;div&gt;Привет, {{ name }}!&lt;/div&gt;'</lin>,
+});
+<tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
+    el: <lin>'#app'</lin>,
+});
+</pre>
+                        </div>
+                        <p>Однако, просто написать атрибут мало. Внутри самого компонента мы должны сказать о том, что снаружи ожидается передача данных.</p>
+                        <p>Это делается с помощью настройки <b>props</b>, внутри которой следует писать названия атрибутов, с помощью которых разрешено передавать данные в компонент.</p>
+                        <p>Атрибуты пишутся в виде массива. У нас пока есть только один атрибут – <b>name</b>.</p>
+                        <p>Пришло время собрать все вместе и запустить. Сделаем это:</p>
+                        <div class="code">
+<pre>
+<tag>Vue</tag>.<att>component</att>(<lin>'my-component'</lin>, {
+    props: [<lin>'name'</lin>],
+    template: <lin>'&lt;div&gt;Привет, {{ name }}!&lt;/div&gt;'</lin>,
+});
+<tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
+    el: <lin>'#app'</lin>,
+});
+<tag>&lt;div</tag> <att>id=</att><lin>"app"</lin>&gt;</tag>
+    <tag>&lt;my-component&gt;</tag> <att>name=</att><lin>"Вася"</lin><tag>&lt;/my-component&gt;</tag>
+<tag>&lt;/div&gt;</tag>
+</pre>                            
+                        </div>
+                        <p>Результатом выполнения этого кода будет следующий HTML:</p>
+                        <div class="code">
+<pre>
+<tag>&lt;div</tag> <att>id=</att><lin>"app"</lin>&gt;</tag>
+    <tag>&lt;div</tag> <att>class=</att><lin>"task"</lin>&gt;</tag>Привет, Вася!<tag>&lt;/div&gt;</tag>
+<tag>&lt;/div&gt;</tag>
+</pre>
+                        </div>
+                        <p>Изучите все страницы из раздела <a href="https://ru.vuejs.org/v2/guide/components.html ">документации</a> с названием <a href="https://ru.vuejs.org/v2/guide/components.html ">Основы компонентов</a>.</p>
                     </div>
                 </div>
-                <div class="contentBx">
+                <div class="contentBx ">
                     <div class="label">Работа с CSS</div>
                     <div class="content">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt blanditiis fugiat deserunt iure soluta, reprehenderit perspiciatis! Eius eum, non aliquid aliquam recusandae nihil, quaerat excepturi commodi ratione culpa accusamus neque.
+                        <p class="content__title">Классы</p>
+                        <p>Работа с атрибутом <b>class</b> происходит аналогичным образом - через <b>v-bind</b>. Но есть нюансы. Давайте разбираться.</p>
+                        <p>Пусть в свойстве <b>str</b> хранится какой-то класс. Добавим его нашему абзацу:</p>
+                        <div class="code">
+<pre>
+<tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
+    el: <lin>'#app'</lin>,
+    data: {
+        str: <lin>'www'</lin>,
+    },
+});
+<tag>&lt;div</tag> <att>id=</att><lin>"app"</lin>&gt;</tag>
+    <tag>&lt;p <att>v-bind:class=</att><lin>"str"</lin>&gt;</tag>Абзац<tag>&lt;/p&gt;</tag>
+<tag>&lt;/div&gt;</tag>
+</pre>
+                        </div>
+                        <p>Результатом этого кода будет следующий HTML:</p>
+                        <div class="code">
+<pre>
+<tag>&lt;div</tag> <att>id=</att><lin>"app"</lin>&gt;</tag>
+    <tag>&lt;p <att>class=</att><lin>"str"</lin>&gt;</tag>Абзац<tag>&lt;/p&gt;</tag>
+<tag>&lt;/div&gt;</tag>
+</pre>
+                        </div>
+                        <p>Также может быть такое, что в <b>str</b> хранится несколько классов, тут тоже проблемы с добавлением не будет, поэтому сделайте это самостоятельно и запустите.</p>
+                        <p>Результатом этого кода будет следующий HTML:</p>
+                        <div class="code">
+<pre>
+<tag>&lt;div</tag> <att>id=</att><lin>"app"</lin>&gt;</tag>
+    <tag>&lt;p <att>class=</att><lin>"www ggg zzz"</lin>&gt;</tag>Абзац<tag>&lt;/p&gt;</tag>
+<tag>&lt;/div&gt;</tag>
+</pre>
+                        </div>
+                        <p>Давайте сделаем так, чтобы класс, в зависимости от значения какого-либо свойства или добавлялся в элемент, или не добавлялся.</p>
+                        <p>Пусть у нас есть свойство <b>isActive</b>, которое может принимать или <b>true</b>, или <b>false</b>.</p>
+                        <p>Давайте сделаем так, чтобы если <b>isActive</b> равно <b>true</b> - у нашего абзаца был класс <b>active</b>, а если <b>false</b> - то не был. Для этого в <b>v-bind:class</b> напишем объект, в котором ключом будет желаемый класс (в нашем случае <b>active</b>), а значением - свойство, в зависимости от которого этот класс будет добавлен нашему абзацу или не будет (в нашем случае это свойство <b>isActive</b>):</p>
+                        <div class="code">
+<pre>
+<tag>&lt;div</tag> <att>id=</att><lin>"app"</lin>&gt;</tag>
+    <tag>&lt;p <att>v-bind:class=</att><lin>"{active: isActive}"</lin>&gt;</tag>Абзац<tag>&lt;/p&gt;</tag>
+<tag>&lt;/div&gt;</tag>
+</pre>
+                        </div>
+                        <p>Давайте соберем все вместе и запустим:</p>
+                        <div class="code">
+<pre>
+<tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
+    el: <lin>'#app'</lin>,
+    data: {
+        isActive: <att>true</att>,
+    },
+});    
+<tag>&lt;div</tag> <att>id=</att><lin>"app"</lin>&gt;</tag>
+    <tag>&lt;p <att>v-bind:class=</att><lin>"{active: isActive}"</lin>&gt;</tag>Абзац<tag>&lt;/p&gt;</tag>
+<tag>&lt;/div&gt;</tag>    
+</pre>
+                        </div>
+                        <p>Можно также добавить несколько классов. В этом случае значением <b>v-bind:class</b> должен служить объект с ключами и значениями. Имена желаемых классов должны быть ключами нашего объекта, а соответсвующие значения - свойствами объекта <b>data</b>. Сделайте это самостоятельно.</p>
+                        <p><span class="greened">Задача 1:</span> Дан абзац. Дано свойство <b>isValid</b> и свойство <b>isDone</b>. Если свойство <b>isValid</b> имеет значение <b>true</b> - добавьте абзацу класс <b>valid</b>. Если свойство <b>isDone</b> имеет значение <b>true</b> - добавьте абзацу класс <b>task-done</b>.</p>
+                        <p class="content__title">Стили</p>
+                        <p>Давайте теперь научимся работать напрямую с CSS стилями через атрибут <b>style</b>. Работа со стилями происходит следующим образом: в атрибут <b>v-bind:style</b> передается объект, в котором желаемые CSS свойства должны быть ключами этого объекта, а соответствующие значения CSS свойств - значениями этого объекта.</p>
+                        <p>Давайте для примера покрасим какой-нибудь абзац в красный цвет и добавим границу зеленого цвета:</p>
+                        <div class="code">
+<pre>
+<tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
+    el: <lin>'#app'</lin>,
+});
+<tag>&lt;div</tag> <att>id=</att><lin>"app"</lin>&gt;</tag>
+    <tag>&lt;p <att>v-bind:style=</att><lin>"{color: 'red', border: '1px solid green'}"</lin>&gt;</tag>Абзац<tag>&lt;/p&gt;</tag>
+<tag>&lt;/div&gt;</tag> 
+</pre>
+                        </div>
+                        <p>Давайте теперь вместо границы установим ему <b>font-size</b> в <b>30px</b>. Так как в объекте не может быть ключа с дефисом, мы должны взять его в кавычки:</p>
+                        <div class="code">
+<pre>
+<tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
+    el: <lin>'#app'</lin>,
+});
+<tag>&lt;div</tag> <att>id=</att><lin>"app"</lin>&gt;</tag>
+    <tag>&lt;p <att>v-bind:style=</att><lin>"{color: 'red', 'font-size': '30px'}"</lin>&gt;</tag>Абзац<tag>&lt;/p&gt;</tag>
+<tag>&lt;/div&gt;</tag> 
+</pre>
+                        </div>
+                        <p>Значения CSS свойств могут также браться из свойств объекта <b>data</b>.</p>
+                        <p>Можно также само свойство задать без указания единиц (то есть без 'px'), а добавить эти единицы потом в самом атрибуте <b>v-bind:style</b>.</p>
+                        <p>Объект со стилями не обязательно хранить значением атрибута <b>v-bind:style</b>, можно вынести его в <b>data</b>:</p>
+                        <div class="code">
+<pre>
+<tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
+    el: <lin>'#app'</lin>,
+    data: {
+	styles: {
+		color: <lin>'red',</lin>
+		fontSize: <lin>'20px',</lin>
+	}
+    },
+});
+<tag>&lt;div</tag> <att>id=</att><lin>"app"</lin>&gt;</tag>
+    <tag>&lt;p <att>v-bind:style=</att><lin>"styles"</lin>&gt;</tag>Абзац<tag>&lt;/p&gt;</tag>
+<tag>&lt;/div&gt;</tag> 
+</pre>
+                        </div>
+                        <p>Можно одновременно смешивать стили из нескольких свойств. Пусть у нас есть два свойства объекта <b>data</b> - <b>styles1</b> и <b>styles2</b>:</p>
+                        <div class="code">
+<pre>
+<tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
+    el: <lin>'#app'</lin>,
+    data: {
+	styles1: {
+		color: <lin>'red',</lin>
+		fontSize: <lin>'20px',</lin>
+        },
+        styles2: {
+            border: <lin>'1px solid red'</lin>,
+        }
+    },
+});
+</pre>
+                        </div>
+                        <p>Мы можем привязать к нашему абзацу одновременно стили и из <b>styles1</b>, и из <b>styles2</b>.</p>
+                        <p>Давайте запустим:</p>
+                        <div class="code">
+<pre>
+<tag>let</tag> app = <tag>new</tag> <att>Vue</att>({
+    el: <lin>'#app'</lin>,
+    data: {
+	styles1: {
+		color: <lin>'red',</lin>
+		fontSize: <lin>'20px',</lin>
+        },
+        styles2: {
+            border: <lin>'1px solid red'</lin>,
+        }
+    },
+});
+<tag>&lt;div</tag> <att>id=</att><lin>"app"</lin>&gt;</tag>
+    <tag>&lt;p <att>v-bind:style=</att><lin>"[styles1,styles2]"</lin>&gt;</tag>Абзац<tag>&lt;/p&gt;</tag>
+<tag>&lt;/div&gt;</tag> 
+</pre>
+                        </div>
+                        <p><span class="greened">Задача 3:</span> Дан чекбокс. Дан абзац. Сделайте следующее: если чекбокс отмечен - абзац должен быть красного цвета, а если не отмечен - то черного.</p>
                     </div>
                 </div>
             </div><!--accordion -->
         </div><!--container -->
      </section><!--main -->
 
-
+     <footer class="footer">
+        <div class="container">
+            <a href="#">Учебник по Vue.js</a>
+            <span>Copyright © Anastasia Erokhina 2020</span>
+        </div><!--container -->
+     </footer><!--footer -->
 
      <script src="js/script.js"></script>
      
