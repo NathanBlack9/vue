@@ -18,38 +18,38 @@
                 </div>
                 <div class="intro__item">
                     <nav class="nav">
-                        <a href="#!" class="nav__link">
+                        <a href="#first" class="nav__link">
                             <img src="img/nav_icon.svg" alt="navigation_icon" class="animate__animated animate__fadeIn">
                             <span>Что такое Vue.js?</span>
                         </a>
-                        <a href="#!" class="nav__link">
+                        <a href="#second" class="nav__link">
                             <img src="img/nav_icon.svg" alt="navigation_icon" class="animate__animated animate__fadeIn animate__delay-1s">
                             <span>События, атрибуты и методы</span>
                         </a>
-                        <a href="#!" class="nav__link">
+                        <a href="#third" class="nav__link">
                             <img src="img/nav_icon.svg" alt="navigation_icon" class="animate__animated animate__fadeIn animate__delay-2s">
                             <span>Вычисляемые свойства</span>
                         </a>
-                        <a href="#!" class="nav__link">
+                        <a href="#fourth" class="nav__link">
                             <img src="img/nav_icon.svg" alt="navigation_icon" class="animate__animated animate__fadeIn animate__delay-3s">
                             <span>Условия, списки и циклы</span>
                         </a>
-                        <a href="#!" class="nav__link">
+                        <a href="#fifth" class="nav__link">
                             <img src="img/nav_icon.svg" alt="navigation_icon" class="animate__animated animate__fadeIn animate__delay-4s">
                             <span>Работа с фильтрами</span>
                         </a>
-                        <a href="#!" class="nav__link">
+                        <a href="#sixth" class="nav__link">
                             <img src="img/nav_icon.svg" alt="navigation_icon" class="animate__animated animate__fadeIn animate__delay-5s">
                             <span>Работа с компонентами</span>
                         </a>
-                        <a href="#!" class="nav__link">
+                        <a href="#seventh" class="nav__link">
                             <img src="img/nav_icon.svg" alt="navigation_icon" class="animate__animated animate__fadeIn animate__delay-1s">
                             <span>Работа с CSS</span>
                         </a>
                     </nav>
                 </div>
             </div><!--intro__inner -->
-            <a href=".main" class="intro__scrrollDown">
+            <a href="#first" class="intro__scrrollDown">
                 <img src="img/mouse.svg" alt="scrollDown">
                 <img src="img/mouse-arrows.svg" alt="scrollDown" class="animate__animated animate__fadeInDown animate__infinite">
             </a>
@@ -60,7 +60,7 @@
         <div class="container">
             <div class="accordion">
 
-                <div class="contentBx active">
+                <div class="contentBx active" id="first">
                     <div class="label">Что такое Vue.js?</div>
                     <div class="content">
                         <p><b>Vue</b> является одним из самых популярных JavaScript фреймворков. Фреймворк представляет собой заготовку, которая помогает вам писать код.</p>
@@ -74,8 +74,7 @@
                         <p>Данный учебник только базовую информацию, поэтому дальнейшее знакомство с фреймворком можно продолжить с помощью <a href="https://ru.vuejs.org/v2/guide/">официальной документации</a>. Она полностью переведена на русский язык, а также постоянно обновляется в соответствии с актуальной версией Vue.js. Также на официальном сайте доступны <a href="https://ru.vuejs.org/v2/examples/index.html">примеры веб-приложений</a>, реализованных с помощью Vue.js.</p>
                     </div>
                 </div>
-
-                <div class="contentBx">
+                <div class="contentBx" id="second">
                     <div class="label">События, атрибуты и методы</div>
                     <div class="content">
                         <p>Настройка <span class="greened">-methods</span> - позволит нам хранить в себе набор функций, которые мы сможем навешивать на события. Во Vue эти функции более принято называть <b>методами</b>.</p>
@@ -176,7 +175,7 @@ methods: {
                         <p><span class="greened">Задача 2:</span> Дан инпут. Сделайте кнопку, нажатие на которую будет по очереди заблокировать и отблокировать наш инпут.</p>
                     </div>
                 </div>
-                <div class="contentBx">
+                <div class="contentBx" id="third">
                     <div class="label">Вычисляемые свойства</div>
                     <div class="content">
                         <p>Введем понятие вычисляемых свойств, выделяющихся в коде элемента ключевым словом <span class="greened">computed</span>. Они очень полезны, когда усложняется логика работы с данными, и встраиваемые в шаблоны выражения уже не помогут.</p>
@@ -242,7 +241,7 @@ reversedMessage: <att>function</att>(){
                         <p><span class="greened">Задача 1:</span> Пусть в <b>data</b> есть три cвойства: <b>name</b> (имя), <b>surname</b> (фамилия) и <b>patronymic</b> (отчество). Сделайте вычисляемое свойство <b>fullName</b>, которое будет содержать фамилию, имя и отчество, записанные через пробел.</p>
                     </div>
                 </div>
-                <div class="contentBx ">
+                <div class="contentBx" id="fourth">
                     <div class="label">Условия списки и циклы</div>
                     <div class="content ">
                         <p class="content__title">Условия</p>
@@ -375,7 +374,7 @@ data: {
                         <p>Выведите на экран элементы этого массива в виде списка <b>ul</b>.</p>
                     </div>
                 </div>
-                <div class="contentBx ">
+                <div class="contentBx" id="fifth">
                     <div class="label">Работа с фильтрами</div>
                     <div class="content">
                         <p>Иногда бывает так, что при выводе данных мы хотим с ними-что-нибудь сделать.</p>
@@ -448,7 +447,7 @@ data: {
                         <p><span class="greened">Задача 2:</span> Сделайте фильтр <b>formatDate</b>, который будет принимать параметром дату в формате 'год-месяц-день' и преобразовывать ее в формат 'день.месяц.год'.</p>
                     </div>
                 </div>
-                <div class="contentBx ">
+                <div class="contentBx" id="sixth">
                     <div class="label">Работа с компонентами</div>
                     <div class="content">
                         <p>Если мы посмотрим на какой-нибудь сайт, то можем выделить на нем некоторые блоки: хедер, контент, сайдбар, футер.</p>
@@ -539,7 +538,7 @@ data: {
                         <p>Изучите все страницы из раздела <a href="https://ru.vuejs.org/v2/guide/components.html ">документации</a> с названием <a href="https://ru.vuejs.org/v2/guide/components.html ">Основы компонентов</a>.</p>
                     </div>
                 </div>
-                <div class="contentBx ">
+                <div class="contentBx" id="seventh">
                     <div class="label">Работа с CSS</div>
                     <div class="content">
                         <p class="content__title">Классы</p>

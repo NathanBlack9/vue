@@ -1,5 +1,5 @@
 .main{
-    min-height: 1600px;
+    min-height: 1000px;
     background: $mainBG;
     padding: 138px 100px;
     @include TransitionMix(0.2s);
@@ -105,7 +105,7 @@
                 
             }
             &.active .content{
-                min-height:900px;
+                min-height:100vh;
                 padding: 50px 82px;
                 @include TransitionMix(0.3s);
             }
