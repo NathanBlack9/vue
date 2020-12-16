@@ -48,28 +48,36 @@
                         </a>
                     </nav>
                 </div>
-            </div>
-            <a href="#!" class="intro__scrrollDown">
+            </div><!--intro__inner -->
+            <a href=".main" class="intro__scrrollDown">
                 <img src="img/mouse.svg" alt="scrollDown">
                 <img src="img/mouse-arrows.svg" alt="scrollDown" class="animate__animated animate__fadeInDown animate__infinite">
             </a>
-        </div>
+        </div><!--container -->
      </section> <!--intro -->
 
      <section class="main">
         <div class="container">
             <div class="accordion">
 
-                <div class="contentBx" >
+                <div class="contentBx">
                     <div class="label">Что такое Vue.js?</div>
                     <div class="content">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt blanditiis fugiat deserunt iure soluta, reprehenderit perspiciatis! Eius eum, non aliquid aliquam recusandae nihil, quaerat excepturi commodi ratione culpa accusamus neque.
+                        <p><b>Vue</b> является одним из самых популярных JavaScript фреймворков. Фреймворк представляет собой заготовку, которая помогает вам писать код.</p>
+                        <p><b>Как он это делает:</b> фреймворк заставляет вас следовать определенным соглашениям по написанию кода, в результате этого все ваши проекты становится проще разрабатывать, а самое главное - проще поддерживать в дальнейшем.</p>
+                        <p>Фреймворки типа Vue используются для так называемых SPA (single page application - одностраничное приложение). Одностраничное приложение - это сайт, все действия в котором происходят на одной странице, без ее полного обновления.</p>
+                        <p>Примером SPA может служить социальная сеть, работа с почтой и так далее.</p>
+                        <p>Одним из ключевых моментов в работе Vue.js является виртуальный DOM. Структура веб-страницы, как правило, описывается с помощью DOM (Document Object Model), которая представляет организацию элементов html на странице. Для взаимодействия с DOM (добавления, изменения, удаления html-элементов) применяется JavaScript. Но когда мы пытаемся манипулировать html-элементами с помощью JavaScript, то мы можем столкнуться со снижением производительности, особенно при изменении большого количества элементов. А операции над элементами могут занять некоторое время, что неизбежно скажется на пользовательском опыте. Однако если бы мы работали из кода js с объектами JavaScript, то операции производились бы быстрее</p>
+                        <p>Для этого Vue.js использует виртуальный DOM. Виртуальный DOM представляет легковесную копию обычного DOM. Если приложению нужно узнать информацию о состоянии элементов, то происходит обращение к виртуальному DOM. Если данные, которые используются в приложении Vue.js, изменяются, то изменения вначале вносятся в виртуальный DOM. Потом Vue выбирает минимальный набор компонентов, для которых надо выполнить изменения на веб-странице, чтобы реальный DOM соответствовал виртуальному. Благодаря виртуальному DOM повышается производительность приложения.</p>
+                        <p>В отличие от React.js, jQuery, AngularJS и других фреймворков, Vue.js достаточно прост для изучения. Но, как и с другими JS-фреймворками, потребуются знания основ CSS, HTML и JavaScript, поэтому советуем сначала изучить их. В данной подборке мы расскажем о серии видеоуроков по Vue.js, которые помогут разобраться с основными элементами фреймворка.</p>
+                        <p>Подключение описано на<a href="https://ru.vuejs.org/v2/guide/installation.html"> официальном сайте</a></p>
+                        <p>Данный учебник только базовую информацию, поэтому дальнейшее знакомство с фреймворком можно продолжить с помощью <a href="https://ru.vuejs.org/v2/guide/">официальной документации</a>. Она полностью переведена на русский язык, а также постоянно обновляется в соответствии с актуальной версией Vue.js. Также на официальном сайте доступны <a href="https://ru.vuejs.org/v2/examples/index.html">примеры веб-приложений</a>, реализованных с помощью Vue.js.</p>
                     </div>
                 </div>
-                <div class="contentBx">
+                <div class="contentBx active">
                     <div class="label">События, атрибуты и методы</div>
                     <div class="content">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt blanditiis fugiat deserunt iure soluta, reprehenderit perspiciatis! Eius eum, non aliquid aliquam recusandae nihil, quaerat excepturi commodi ratione culpa accusamus neque.
+                        <p>Настройка -methods - позволит нам хранить в себе набор функций, которые мы сможем навешивать на события. Во Vue эти функции более принято называть методами.</p>
                     </div>
                 </div>
                 <div class="contentBx" >
@@ -102,9 +110,9 @@
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt blanditiis fugiat deserunt iure soluta, reprehenderit perspiciatis! Eius eum, non aliquid aliquam recusandae nihil, quaerat excepturi commodi ratione culpa accusamus neque.
                     </div>
                 </div>
-            </div>
-        </div>
-     </section>
+            </div><!--accordion -->
+        </div><!--container -->
+     </section><!--main -->
 
 
 

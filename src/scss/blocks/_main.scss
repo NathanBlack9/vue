@@ -30,6 +30,7 @@
                     transform: translateY(-50%);
                     font-size: 1em;
                     font-weight: 400;
+                    padding-bottom: 8px;
                 }
             }
             &.active .label::before{
@@ -40,13 +41,32 @@
                 position: relative;
                 background: $accBG;
                 height: 0;
+                min-height: 0;
                 padding: 0 82px;
                 overflow: hidden;
                 @include TransitionMix(0.3s);
+
+                p{
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 20px;
+                    text-align: justify;
+                    color: $textColor;
+                    margin-bottom: 10px;
+
+                    /*some help tag's for text*/
+                    span,a{
+                        font-weight: bold;
+                        color: $linkColor;
+                        text-decoration: none;
+                    }
+                    /*------------------------*/
+                }
             }
             &.active .content{
-                min-height: 630px;
+                min-height:800px;
                 padding: 50px 82px;
+                @include TransitionMix(0.3s);
             }
         }
     }
